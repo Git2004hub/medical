@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { LoginService } from '../../src/app/services/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../../src/app/services/auth.service';  // à adapter selon ton chemin
+
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,8 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private authService: AuthService
   ) {}
 
   onSubmit() {
@@ -37,16 +40,19 @@ export class LoginComponent {
       next: (utilisateur) => {
         if (utilisateur.motDePasse === this.motDePasse) {
           alert('Connexion réussie ! Vous êtes connecté en tant que ' + utilisateur.role + '.');
+          this.authService.setRole(utilisateur.role);
+          this.authService.setUserName(utilisateur.nom);  // ou utilisateur.name selon le champ retourné
+          this.authService.login();
           switch (utilisateur.role) {
             case 'admin':
             this.router.navigate(['/admin']);
             break;
           case 'médecin':
           case 'medecin':  // pour être tolérant aux deux orthographes
-            this.router.navigate(['/medecin']);
+            this.router.navigate(['/form-consult']);
             break;
           case 'patient':
-            this.router.navigate(['/patient']);
+            this.router.navigate(['/form-rdv']);
             break;
           default:
             this.erreur = 'Rôle inconnu. Veuillez contacter l’administrateur.';

@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Modifier Médecin</h2>
+
+  <form [formGroup]="medecinForm" (ngSubmit)="onSubmit()">
+    <label>Nom *</label>
+    <input formControlName="nom" placeholder="Nom" />
+    <div *ngIf="medecinForm.get('nom')?.invalid && medecinForm.get('nom')?.touched">
+      Le nom est requis.
+    </div>
+
+    <label>Prénom *</label>
+    <input formControlName="prenom" placeholder="Prénom" />
+    <div *ngIf="medecinForm.get('prenom')?.invalid && medecinForm.get('prenom')?.touched">
+      Le prénom est requis.
+    </div>
+
+    <label>Spécialité *</label>
+    <input formControlName="specialite" placeholder="Spécialité" />
+    <div *ngIf="medecinForm.get('specialite')?.invalid && medecinForm.get('specialite')?.touched">
+      La spécialité est requise.
+    </div>
+
+    <button type="submit" [disabled]="medecinForm.invalid">Modifier</button>
+  </form>
+</div>

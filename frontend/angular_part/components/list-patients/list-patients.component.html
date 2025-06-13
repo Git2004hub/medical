@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Liste des Patients</h2>
+
+  <!-- Affichage conditionnel d'un message si la liste est vide -->
+  <p *ngIf="patients.length === 0">Aucun patient enregistré pour le moment.</p>
+
+  <!-- Tableau des patients -->
+  <table *ngIf="patients.length > 0">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Âge</th>
+        <th>Sexe</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let p of patients">
+        <td>{{ p.nom }}</td>
+        <td>{{ p.prenom }}</td>
+        <td>{{ p.age }}</td>
+        <td>{{ p.sexe }}</td>
+        <td>
+          <button class="edit-btn" [routerLink]="['/edit-patient', p.patient_id]">Modifier</button>
+
+          <button class="delete-btn"
+                  (click)="supprimer(p.patient_id!)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

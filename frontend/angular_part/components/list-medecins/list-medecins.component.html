@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Liste des Médecins</h2>
+
+  <p *ngIf="medecins.length === 0">Aucun médecin enregistré pour le moment.</p>
+
+  <table *ngIf="medecins.length > 0">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Spécialité</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let m of medecins">
+        <td>{{ m.nom }}</td>
+        <td>{{ m.prenom }}</td>
+        <td>{{ m.specialite }}</td>
+        <td>
+            <button class="edit-btn" [routerLink]="['/edit-medecin', m.medecin_id]">Modifier</button>
+          <button class="delete-btn"
+                  (click)="supprimer(m.medecin_id!)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

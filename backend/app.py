@@ -5,11 +5,10 @@ from neo4j_config import init_neo4j, get_driver
 #from db_config import init_mongodb, init_neo4j
 
 from routes.utilisateur_routes import init_routes
+from routes.patient_routes import init_patient_routes
+from routes.medecin_routes import init_medecin_routes
 from backend.db_config import init_mongodb, init_neo4j
 
-
-
-# Import des blueprints
 from routes.rendezvous_routes import rdv_bp
 from routes.consultation_routes import cons_bp
 
@@ -26,6 +25,8 @@ def create_app():
 
     # Initialisation des routes personnalisées utilisateur
     init_routes(app, get_db(), get_driver())
+    init_patient_routes(app, get_db())
+    init_medecin_routes(app, get_db())
     return app
 
 

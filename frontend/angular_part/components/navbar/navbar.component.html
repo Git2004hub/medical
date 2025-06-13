@@ -2,13 +2,51 @@
   <div class="logo">
     <i class="fas fa-clinic-medical"></i> KEAM Healthcare Center
   </div>
-  <ul class="nav-links">
-    <li><a routerLink="/form-rdv">Formulaire RDV</a></li>
-    <li><a routerLink="/list-rdv">Liste RDV</a></li>
-    <li><a routerLink="/list-consults">Consultations</a></li>
-    <li><a routerLink="/form-consult">Ajouter Consultation</a></li>
-    <li><a routerLink="/detail-consult">Détail Consultation</a></li>
-    <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-    <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
-  </ul>
+  
+
+    <!-- Liens accessibles à l’ADMIN -->
+    <ng-container *ngIf="role === 'admin'">
+      <ul class="nav-links">
+      <li><a routerLink="/form-rdv">Formulaire RDV</a></li>
+      <li><a routerLink="/list-rdv">Liste RDV</a></li>
+      <li><a routerLink="/list-consults">Consultations</a></li>
+      <li><a routerLink="/form-consult">Ajouter Consultation</a></li>
+      <li><a routerLink="/list-patient">Liste Patients</a></li>
+      <li><a routerLink="/add-patient">Ajouter Patient</a></li>
+      <li><a routerLink="/list-medecin">Liste Médecins</a></li>
+      <li><a routerLink="/add-medecin">Ajouter Médecin</a></li>
+      <li><a routerLink="/admin">Liste Utilisateurs</a></li>
+      </ul>
+
+    </ng-container>
+
+    <!-- Liens accessibles au MÉDECIN -->
+    <ng-container *ngIf="role === 'medecin' || role === 'médecin'">
+      <ul class="nav-links">
+      <li><a routerLink="/form-consult">Ajouter Consultation</a></li>
+      <li><a routerLink="/list-rdv">Liste RDV</a></li>
+      <li><a routerLink="/list-patient">Liste Patients</a></li>
+      <li><a routerLink="/add-patient">Ajouter Patient</a></li>
+      </ul>
+    </ng-container>
+
+    <!-- Liens accessibles au PATIENT -->
+    <ng-container *ngIf="role === 'patient'">
+      <ul class="nav-links">
+      <li><a routerLink="/form-rdv">Formulaire RDV</a></li>
+      </ul>
+    </ng-container>
+
+    <ul class="nav-links">
+    <!-- Liens Login / Register visibles UNIQUEMENT si NON connecté -->
+    <li *ngIf="!role"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+    <li *ngIf="!role"><a routerLink="/register" routerLinkActive="active">Register</a></li>
+    <p *ngIf="userName" class="nav-item user-name">
+    Bonjour {{role}}, <strong> {{ userName }}</strong>
+    </p>
+    <!-- Bouton Logout visible quand connecté -->
+    <li *ngIf="role"><a routerLink="/login" (click)="logout()" style="cursor:pointer; margin-right: -20px; margin-top: -50px">Logout</a></li>
+    </ul>
+
+  
 </nav>

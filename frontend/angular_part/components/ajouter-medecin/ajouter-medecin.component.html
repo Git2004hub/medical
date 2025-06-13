@@ -1,0 +1,13 @@
+<h2>Ajouter un Médecin</h2>
+<div class="form-container">
+  <label>Nom :</label>
+  <input [(ngModel)]="nom" type="text" placeholder="nom">
+
+  <label>Prénom :</label>
+  <input [(ngModel)]="prenom" type="text" placeholder="prenom">
+
+  <label>Spécialité :</label>
+  <input [(ngModel)]="specialite" type="text" placeholder="specialite">
+
+  <button (click)="ajouter()">Ajouter</button>
+</div>

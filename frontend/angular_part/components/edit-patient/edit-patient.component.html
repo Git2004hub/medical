@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Modifier Patient</h2>
+
+  <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <label>Nom *</label>
+    <input formControlName="nom" placeholder="Nom" />
+    <div *ngIf="patientForm.get('nom')?.invalid && patientForm.get('nom')?.touched" class="error">
+      Le nom est requis.
+    </div>
+
+    <label>Prénom *</label>
+    <input formControlName="prenom" placeholder="Prénom" />
+    <div *ngIf="patientForm.get('prenom')?.invalid && patientForm.get('prenom')?.touched" class="error">
+      Le prénom est requis.
+    </div>
+
+    <label>Âge *</label>
+    <input type="number" formControlName="age" placeholder="Âge" />
+    <div *ngIf="patientForm.get('age')?.invalid && patientForm.get('age')?.touched" class="error">
+      L'âge est requis et doit être positif.
+    </div>
+
+    <label>Adresse *</label>
+    <input formControlName="adresse" placeholder="Adresse" />
+    <div *ngIf="patientForm.get('adresse')?.invalid && patientForm.get('adresse')?.touched" class="error">
+      L'adresse est requise.
+    </div>
+
+    <label>Téléphone *</label>
+    <input formControlName="telephone" placeholder="Téléphone" />
+    <div *ngIf="patientForm.get('telephone')?.invalid && patientForm.get('telephone')?.touched" class="error">
+      Téléphone invalide (exemple: +212612345678).
+    </div>
+
+    <button type="submit" [disabled]="patientForm.invalid">Modifier</button>
+  </form>
+
+  <div *ngIf="erreur" class="error-message">{{ erreur }}</div>
+</div>

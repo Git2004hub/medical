@@ -7,7 +7,13 @@ import { ConsultationFormComponent } from '../../components/consultation-form/co
 import { LoginComponent } from '../../components/login/login.component';
 import { RegisterComponent } from '../../components/register/register.component';
 import { AdminPageComponent } from '../../components/admin-page/admin-page.component';
+import { AjouterPatientComponent } from '../../components/ajouter-patient/ajouter-patient.component';
+import { ListPatientsComponent } from '../../components/list-patients/list-patients.component';
+import { AjouterMedecinComponent } from '../../components/ajouter-medecin/ajouter-medecin.component';
+import { ListMedecinsComponent } from '../../components/list-medecins/list-medecins.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { EditMedecinComponent } from '../../components/edit-medecin/edit-medecin.component';
+import { EditPatientComponent } from '../../components/edit-patient/edit-patient.component';
 
 export const routes: Routes = [
   { path: 'list-consults', component: ConsultationListComponent },
@@ -18,6 +24,12 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'admin', component: AdminPageComponent },
-  { path: '', redirectTo: 'list-rdv', pathMatch: 'full' },
-  { path: '**', redirectTo: 'list-rdv' }
+  { path: 'add-patient', component: AjouterPatientComponent },
+  { path: 'list-patient', component: ListPatientsComponent },
+  { path: 'add-medecin', component: AjouterMedecinComponent },
+  { path: 'list-medecin', component: ListMedecinsComponent },
+  { path: 'edit-medecin/:id', component: EditMedecinComponent },
+  { path: 'edit-patient/:id', component: EditPatientComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'login' }
 ];

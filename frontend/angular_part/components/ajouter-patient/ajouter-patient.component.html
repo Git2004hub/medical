@@ -1,0 +1,15 @@
+<h2>Ajouter un Patient</h2>
+<form (ngSubmit)="onSubmit()">
+  <label>Nom: <input [(ngModel)]="nom" name="nom" required></label><br>
+  <label>Prénom: <input [(ngModel)]="prenom" name="prenom" required></label><br>
+  <label>Email: <input [(ngModel)]="email" name="email" required></label><br>
+  <label>Âge: <input type="number" [(ngModel)]="age" name="age" required></label><br>
+  <label>Sexe:
+    <select [(ngModel)]="sexe" name="sexe">
+      <option>Homme</option>
+      <option>Femme</option>
+    </select>
+  </label><br>
+  <button type="submit">Ajouter</button>
+  <div *ngIf="erreur" style="color:red">{{ erreur }}</div>
+</form>

@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ConsultService } from '../../src/app/services/consultation.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-consultation-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgFor],
   templateUrl: './consultation-detail.component.html',
   styleUrls: ['./consultation-detail.component.css'] 
 })
