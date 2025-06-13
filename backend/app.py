@@ -2,12 +2,10 @@ from flask import Flask
 from flask_cors import CORS
 from mongo_config import init_mongo, get_db
 from neo4j_config import init_neo4j, get_driver
-#from db_config import init_mongodb, init_neo4j
 
 from routes.utilisateur_routes import init_routes
 from routes.patient_routes import init_patient_routes
 from routes.medecin_routes import init_medecin_routes
-from backend.db_config import init_mongodb, init_neo4j
 
 from routes.rendezvous_routes import rdv_bp
 from routes.consultation_routes import cons_bp
